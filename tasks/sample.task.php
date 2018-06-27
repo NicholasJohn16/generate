@@ -161,7 +161,6 @@ class GenerateSampleCommand extends Command
 		}
 
 		if($value && $attribute->getType() == 'AnDomainAttributeDate') {
-			error_log($value->format(DateTime::ATOM));
 			$value = AnDomainAttributeDate::getInstance()->setDate($value->getTimestamp(), DATE_FORMAT_UNIXTIME);
 		}
 
@@ -191,7 +190,6 @@ class GenerateSampleCommand extends Command
 		}
 
 		if($this->repo->entityInherits('ComBaseDomainEntityComment')) {
-			error_log('does inherit');
 			$config = $this->object_merge($config, $this->config->base->comment);
 		}
 
