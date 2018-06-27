@@ -40,11 +40,11 @@ These defaults can be overriden and extended to include attributes for your own 
 
 ```
 {
-	"myrepo": {
-		"myentity": {
+  "myrepo": {
+    "myentity": {
 
-		}
-	}
+    }
+  }
 }
 ```
 
@@ -52,17 +52,17 @@ Then within your entity, list any additional attributes that you'd like to be ra
 
 ```
 {
-	"myrepo": {
-		"myentity": {
-			"bookISBN": {
-				"provider": "isbn13"
-			},
-			"enabled": {
-				"arguments": [50]
-			},
-			"subtitle": {}
-		}
-	}
+  "myrepo": {
+    "myentity": {
+      "bookISBN": {
+        "provider": "isbn13"
+      },
+      "enabled": {
+        "arguments": [50]
+      },
+      "subtitle": {}
+    }
+  }
 }
 ```
 
