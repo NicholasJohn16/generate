@@ -1,0 +1,11 @@
+{   
+    "name"  : "nicholasjohn16/generate",
+	"description": "Generate Command for Anahita CLI",
+    "type"  : "anahita-extension",
+    "license": "GPL-3.0-only",
+    "require": {
+        "php": ">=5.6",
+        "anahita/anahita": "4.3.*",
+        "fzaninotto/faker": "^1.7"
+    }
+}

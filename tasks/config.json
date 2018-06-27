@@ -1,0 +1,125 @@
+{
+	"defaults": {
+		"string": {
+			"provider": "text"
+		},
+		"boolean": {
+			"provider": "boolean",
+			"arguments": [10]
+		},
+		"integer": {
+			"provider": "randomDigit"
+		},
+		"AnDomainAttributeDate": {
+			"provider": "dateTime",
+			"arguments": ["now", "UTC"]
+		},
+		"AnDomainAttributeSet": {},
+		"AnDomainAttributeJson": {}
+	},
+	"base": {
+		"node": {
+			"enabled": {},
+			"verified": {
+				"arguments": [1]
+			}
+		},
+		"comment": {
+			"body": {
+				"provider": "paragraph"
+			},
+			"creationTime": {},
+			"updateTime": {},
+			"enabled": {}
+		}
+	},
+	"actors": {
+		"actor": {
+			"name":{
+				"provider": "words",
+				"arguments": [3, true]
+			},
+			"body":{
+				"provider": "paragraph"
+			},
+			"creationTime":{},
+			"updateTime":{},
+			"alias":{
+				"provider": "slug"
+			},
+			"access":{
+				"provider": "randomElement",
+				"arguments": [
+					["public", "registered", "followers", "leaders", "mutuals", "admins"]
+				]
+			},
+			"allowFollowRequest":{}
+		}
+	},
+	"medium": {
+		"medium": {
+			"access":{
+				"provider": "randomElement",
+				"arguments": [
+					["public", "registered", "followers", "leaders", "mutuals", "admins"]
+				]
+			},
+			"body":{
+				"provider": "paragraph"
+			},
+			"alias":{
+				"provider": "slug"
+			},
+			"creationTime":{},
+			"updateTime":{},
+			"openToComment":{}
+		}
+	},
+	"people": {
+		"person": {
+			"alias": {
+				"provider": "userName"
+			},
+			"givenName": {
+				"provider": "firstName"
+			},
+			"familyName": {
+				"provider": "lastName"
+			},
+			"username": {
+				"provider": "userName"
+			},
+			"email": {
+				"provider": "safeEmail"
+			},
+			"password": {
+				"provider": "password"
+			},
+			"usertype": {
+				"provider": "randomElement",
+				"arguments" : [
+					["registered", "administrator"]
+				]
+			},
+			"gender": {
+				"provider": "randomElement",
+				"arguments": [
+					["male", "female", "neutral"]
+				]
+			},
+			"lastVisitDate": {},
+			"enabled": {},
+			"verified": {
+				"arguments": [1]
+			}
+		}
+	},
+	"topics": {
+		"topic": {
+			"pinned": {
+				"attributes": [5]
+			}
+		}
+	}
+
+}
