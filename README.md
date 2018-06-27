@@ -5,7 +5,7 @@ The Generate Command is used to automatically generate sample data for testing a
 Installation is done through composer.  Since this is a dev tool, requiring it as a dev tool so it's not installed in production.
 
 ```
-composer require nicholasjohn/generate --dev
+composer require nicholasjohn16/generate --dev
 ```
 
 ## Usage
