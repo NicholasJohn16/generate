@@ -9,7 +9,7 @@ composer require nicholasjohn16/generate --dev
 ```
 
 ## Usage
-The Genereate Command is integrated into Anahita's CLI. To us it, you just need to pass in the repo and entity name that you wish to generate sample data for. Optionally, you can pass in the number of entities to generate using the count argument. This is 10 by default.
+The Genereate Command is integrated into Anahita's CLI. To use it, you just need to pass in the repo and entity name that you wish to generate sample data for. Optionally, you can pass in the number of entities to generate using the count argument. This is 10 by default.
 
 ```
 anahita generate:sample repo.entity [--count|-c="..."] [relationships1] ... [relationshipsN]
@@ -34,7 +34,7 @@ anahita generate:sample notes.note owner:2 author
 Many to many relationships are not yet supported.
 
 ### Attributes
-Attributes are generated randomly based on their entity definition. Non-required attributes have a chance of being null. If they have a default value, that will be used instead. Faker PHP Library is used to generate the random values.  The provider used for each attribute is based on the `config.json` settings. Each attribute type has it's own set of defaults, followed by defaults for each entity type.
+Attributes are generated randomly based on their entity definition. Non-required attributes have a chance of being null. If the generated value is null and they have a default value, the default value will be used instead. Faker PHP Library is used to generate the random values.  The provider used for each attribute is based on the `config.json` settings. Each attribute type has it's own set of defaults, followed by defaults for each entity attributes. Attributes not listed in will be skipped over and not generated.
 
 These defaults can be overriden and extended to include attributes for your own entities. For your own projects, create a `sample.json` file in the main directory of your Anahita installation and add an repo and entity object like below.
 
@@ -48,7 +48,7 @@ These defaults can be overriden and extended to include attributes for your own 
 }
 ```
 
-Then within your entity, list any additional attributes that you'd like to be randomly generated. As well, you can optional override the provider used for the attribute type and any arguments that are passed to it.
+Then within your entity, list any additional attributes that you'd like to be randomly generated. As well, you can optional override the provider used for the attribute type and any arguments that are passed to it. You can also override core defaults using the same method. Providers must return a string, int, boolean or DateTime object.
 
 ```
 {
@@ -66,4 +66,3 @@ Then within your entity, list any additional attributes that you'd like to be ra
 }
 ```
 
-You can also override core defaults using the same method as above. Providers must return a string or DateTime object.
