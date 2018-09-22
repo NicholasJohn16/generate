@@ -1,6 +1,9 @@
 <?php
 
-$console->loadFramework();
+if (!$console->isInitialized()) {
+    return;
+}
+
 $console->add(new GenerateSampleCommand);
 
 require_once COMPOSER_VENDOR_DIR . '/fzaninotto/faker/src/autoload.php';
@@ -19,12 +22,16 @@ class GenerateSampleCommand extends Command
 	private $config;
 
 	public function __construct() {
-		$file1 = file_get_contents(dirname(__FILE__) . '/config.json');
-		$config = json_decode($file1);
-		$file2 = file_get_contents(COMPOSER_ROOT . '/sample.json');
-		$override = json_decode($file2);
+		$configJson = file_get_contents(dirname(__FILE__) . '/config.json');
+		$config = json_decode($configJson);
 
-		$this->config = $this->object_merge($config, $override);
+		if(file_exists(COMPOSER_ROOT . '/sample.json')) {
+			$overrideJson = file_get_contents(COMPOSER_ROOT . '/sample.json');
+			$override = json_decode($overrideJson);
+			$config = $this->object_merge($config, $override);
+		}
+
+		$this->config = $config;
 		$this->faker = Faker\Factory::create();
 
 		parent::__construct();
@@ -44,6 +51,7 @@ class GenerateSampleCommand extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
+		$this->getApplication()->loadFramework();
 		list($component, $entity) = explode('.', $input->getArgument('component.entity'));
 		$relationships = $this->prepareRelationship($input->getArgument('relationships'));
 		$data = array();
